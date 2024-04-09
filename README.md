@@ -3,6 +3,8 @@
 
 Initiate a [sycamore](https://sycamore-rs.netlify.app/) project
 
+! It's for Sycamore version 0.9 (or later).
+
 ## Installation
 ```
 cargo install sycamore-template
