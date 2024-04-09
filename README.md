@@ -35,6 +35,7 @@ sycamore-template
   --copy-dir="/assets"
   --css="/style.css"
   --favicon="/favicon.svg"
+  --version="0.9.0-beta.2"
 ```
 
 * name
@@ -53,4 +54,6 @@ sycamore-template
 * favicon
   - Optional. Add a favicon head line in the `index.html` with given href:
   - `<link rel="icon" type="image/x-icon" href="{x}">`
-
+* version
+  - Optional. default is "0.9.0-beta.2"
+  - It would be better to add any crates with their latest version, however, as currently Sycamore has beta version as its latest one, I included this option to manually designate the version. This version value is applied to both of sycamore and sycamore-router.
