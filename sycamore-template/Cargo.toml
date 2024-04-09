@@ -1,0 +1,17 @@
+[package]
+name = "sycamore-template"
+version = "0.1.0"
+edition = "2021"
+authors = ["Acheul <seoul605.21@gmail.com>"]
+license = "MIT"
+repository = "https://github.com/acheul/sycamore-template"
+description = "Geratates sycamore templates."
+readme = "../README.md"
+keywords = ["sycamore"]
+exclude = ["ex-project", "ex-router-project"]
+
+[[bin]]
+name = "sycamore-template"
+
+[dependencies]
+clap = { version = "4.5.4", features = ["derive"] }
