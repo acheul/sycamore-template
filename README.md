@@ -7,7 +7,7 @@ Initiate a [sycamore](https://sycamore-rs.netlify.app/) project
 
 ## Installation
 ```
-cargo install sycamore-template
+cargo install sycamore-template --version=0.1.0-beta.4
 ```
 
 ## Use
@@ -63,4 +63,5 @@ sycamore-template
 
 # Dev Logs
 * `v0.1.0-beta.4`
-  * follow up of sycamore v0.9.0-beta.4
+  * follow up of sycamore v0.9.0-beta.4.
+  * Also yanked `v0.1.0`, which was the first and former version; This crate will be unstable untill stabilization of sycamore v0.9.0;
