@@ -1,7 +1,5 @@
 [workspace]
 resolver = "2"
-members = [
-  "sycamore-template",
-  "ex-project",
-  "ex-router-project"
+members = [ "ex-project", "ex-router-project",
+  "sycamore-template"
 ]

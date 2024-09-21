@@ -1,7 +1,7 @@
 use crate::*;
 
 #[component]
-pub fn App<G: Html>() -> View<G> {
+pub fn App() -> View {
   view! {
     main() {
       "Hello Sycamore!"

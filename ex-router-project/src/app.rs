@@ -7,18 +7,18 @@ pub enum Routes {
   #[not_found] NotFound
 }
 
-fn switch<G: Html>(route: ReadSignal<Routes>) -> View<G> {
+fn switch(route: ReadSignal<Routes>) -> View {
   
-  let view = create_memo(on(route, move || match route.get_clone() {
+  let view = move || match route.get_clone() {
     Routes::Index => view! { "index" },
     Routes::NotFound => view! { "Not Found" },
-  }));
+  };
   
-  view! { (view.get_clone()) }
+  view! { (view) }
 }
 
 #[component]
-pub fn App<G: Html>() -> View<G> {
+pub fn App() -> View {
   view! {
     main() {
       Router(

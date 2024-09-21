@@ -22,7 +22,7 @@ pub struct Config {
   #[arg(long)]
   favicon: Option<String>,
   /// version of sycamore
-  #[arg(short, long, default_value_t=String::from("0.9.0-beta.2"))]
+  #[arg(short, long, default_value_t=String::from("0.9.0-beta.4"))]
   version: String
 }
 
@@ -135,7 +135,7 @@ pub fn app_literal(
 use crate::*;
 
 #[component]
-pub fn App<G: Html>() -> View<G> {
+pub fn App() -> View {
   view! {
     main() {
       "Hello Sycamore!"
@@ -154,18 +154,18 @@ pub enum Routes {
   #[not_found] NotFound
 }
 
-fn switch<G: Html>(route: ReadSignal<Routes>) -> View<G> {
+fn switch(route: ReadSignal<Routes>) -> View {
   
-  let view = create_memo(on(route, move || match route.get_clone() {
+  let view = move || match route.get_clone() {
     Routes::Index => view! { "index" },
     Routes::NotFound => view! { "Not Found" },
-  }));
+  };
   
-  view! { (view.get_clone()) }
+  view! { (view) }
 }
 
 #[component]
-pub fn App<G: Html>() -> View<G> {
+pub fn App() -> View {
   view! {
     main() {
       Router(
