@@ -5,7 +5,7 @@ Initiate a [sycamore](https://sycamore-rs.netlify.app/) project (since sycamore 
 
 ## Installation
 ```
-cargo install sycamore-template --version=0.1.0
+cargo install sycamore-template --version=0.1.1
 ```
 
 ## Use
@@ -59,6 +59,6 @@ sycamore-template
 ```yaml
 * `v0.1.0-beta.4`
   - follow up of sycamore v0.9.0-beta.4.
-* `v0.1.0`
+* `v0.1.1`
   - stablized with sycamore v0.9
 ```
