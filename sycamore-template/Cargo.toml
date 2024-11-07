@@ -8,7 +8,6 @@ repository = "https://github.com/acheul/sycamore-template"
 description = "Generates sycamore templates."
 readme = "../README.md"
 keywords = ["sycamore"]
-exclude = ["src/includes"]
 
 [[bin]]
 name = "sycamore-template"
