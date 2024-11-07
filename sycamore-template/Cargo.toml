@@ -1,6 +1,6 @@
 [package]
 name = "sycamore-template"
-version = "0.1.0-beta.4"
+version = "0.1.0"
 edition = "2021"
 authors = ["Acheul <seoul605.21@gmail.com>"]
 license = "MIT"
@@ -8,7 +8,7 @@ repository = "https://github.com/acheul/sycamore-template"
 description = "Generates sycamore templates."
 readme = "../README.md"
 keywords = ["sycamore"]
-exclude = ["ex-project", "ex-router-project"]
+exclude = ["src/includes"]
 
 [[bin]]
 name = "sycamore-template"

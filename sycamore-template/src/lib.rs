@@ -22,7 +22,7 @@ pub struct Config {
   #[arg(long)]
   favicon: Option<String>,
   /// version of sycamore
-  #[arg(short, long, default_value_t=String::from("0.9.0-beta.4"))]
+  #[arg(short, long, default_value_t=String::from("0.9"))]
   version: String
 }
 
@@ -62,19 +62,15 @@ impl Config {
     let src = path.join("src");
 
     let mut f = File::create(path.join("index.html")).unwrap();
-    if let Err(e) = f.write_all(index_literal(self.name.as_str(), self.copy_dir.clone(), self.css.clone(), self.favicon.clone()).as_bytes()) {
-      return Err(format!("{:?}", e));
-    }
+    f.write_all(format_index_literal(self.name.as_str(), self.copy_dir.clone(), self.css.clone(), self.favicon.clone()).as_bytes())
+      .map_err(|e| e.to_string())?;
 
     let mut f = File::create(src.join("main.rs")).unwrap();
-    if let Err(e) = f.write_all(main_literal().as_bytes()) {
-      return Err(format!("{:?}", e));
-    }
+    f.write_all(include_str!("includes/main.in").as_bytes()).map_err(|e| e.to_string())?;
 
     let mut f = File::create(src.join("app.rs")).unwrap();
-    if let Err(e) = f.write_all(app_literal(self.router).as_bytes()) {
-      return Err(format!("{:?}", e));
-    }
+    let app_literal = if self.router { include_str!("includes/app_router.in") } else { include_str!("includes/app.in") };
+    f.write_all(app_literal.as_bytes()).map_err(|e| e.to_string())?;
 
     let msg = format!("Sycamore project {} just initiated!", self.name);
     Ok(msg)
@@ -84,7 +80,7 @@ impl Config {
 
 // literals //
 
-pub fn index_literal(
+pub fn format_index_literal(
   title: &str,
   copy_dir: Option<String>,
   css: Option<String>,
@@ -110,72 +106,4 @@ pub fn index_literal(
   favicon.map(|x| format!(r#"<link rel="icon" type="image/x-icon" href="{x}">"#)).unwrap_or_default()
   ).trim()
     .split("\n").filter_map(|x| if x.trim().len()>0 { Some(x)} else {None}).collect::<Vec<_>>().join("\n")
-}
-
-pub fn main_literal() -> String {
-  r#"
-use sycamore::prelude::*;
-use sycamore::futures::spawn_local_scoped;
-use wasm_bindgen::prelude::*;
-
-mod app;
-
-fn main() {
-  sycamore::render(app::App);
-}
-  "#.trim().to_string()
-}
-
-pub fn app_literal(
-  router: bool
-) -> String {
-
-  let x = if !router {
-    r##"
-use crate::*;
-
-#[component]
-pub fn App() -> View {
-  view! {
-    main() {
-      "Hello Sycamore!"
-    }
-  }
-}
-    "##
-  } else {
-    r##"
-use crate::*;
-use sycamore_router::{Route, Router, HistoryIntegration};
-
-#[derive(Clone, Route)]
-pub enum Routes {
-  #[to("/")] Index,
-  #[not_found] NotFound
-}
-
-fn switch(route: ReadSignal<Routes>) -> View {
-  
-  let view = move || match route.get_clone() {
-    Routes::Index => view! { "index" },
-    Routes::NotFound => view! { "Not Found" },
-  };
-  
-  view! { (view) }
-}
-
-#[component]
-pub fn App() -> View {
-  view! {
-    main() {
-      Router(
-        integration=HistoryIntegration::new(),
-        view=switch
-      )
-    }
-  }
-}
-    "##
-  };
-  x.trim().to_string()
 }
