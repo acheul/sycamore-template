@@ -54,7 +54,7 @@ sycamore-template
   - At this moment, sycamore version `0.9` is used for default;
 
 
-# Dev Logs
+# Logs
 ```yaml
 * `v0.1.0-beta.4`
   - follow up of sycamore v0.9.0-beta.4.
