@@ -14,7 +14,6 @@ cargo install sycamore-template --version=0.1.1
 ```
 sycamore-template --name=ex-project
 ```
-</br>
 
 * Full example: this command generates a sycamore project named "ex-router-project", which using `sycamore-router`. Also the `index.html` will have head lines of `copy-dir` and `css`. (see directory `ex-router-project`)
 ```
