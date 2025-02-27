@@ -5,7 +5,7 @@ Initiate a [sycamore](https://sycamore-rs.netlify.app/) project (since sycamore 
 
 ## Installation
 ```
-cargo install sycamore-template --version=0.1.1
+cargo install sycamore-template
 ```
 
 ## Use
