@@ -60,4 +60,6 @@ sycamore-template
   - follow up of sycamore v0.9.0-beta.4.
 * `v0.1.1`
   - stablized with sycamore v0.9
+* `v0.1.2`
+  - added `<body></body>` for `index.html`
 ```

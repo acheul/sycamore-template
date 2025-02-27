@@ -50,6 +50,9 @@ impl Config {
     Command::new("cargo").args(["add", "wasm-bindgen", package_.as_str()])
       .output().expect(format!(r"`cargo add wasm-bindgen {}` failed", package_).as_str());
 
+      Command::new("cargo").args(["add", "console_error_panic_hook", package_.as_str()])
+        .output().expect(format!(r"`cargo add console_error_panic_hook {}` failed", package_).as_str());
+
     if self.router {
       let syca_router = format!("sycamore-router@{}", self.version);
       Command::new("cargo").args(["add", syca_router.as_str(), package_.as_str()])
@@ -98,6 +101,7 @@ pub fn format_index_literal(
     {}
     {}
   </head>
+  <body></body>
 </html>
   "#,
   title,
