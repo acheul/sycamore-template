@@ -1,3 +1,9 @@
+⚠️ *This crate got DEPRECATED: Won't be maintained anymore*
+
+This crate was a personal project developed independently from the official Sycamore versions. And it's not going to be updated or maintained. For information on using Sycamore framework, refer to its official site.
+
+<br/>
+
 # Sycamore Template Generator
 [![Crates.io](https://img.shields.io/crates/v/sycamore-template)](https://crates.io/crates/sycamore-template)
 
